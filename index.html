@@ -16,8 +16,10 @@
     <main class="main-content">
         <ul class="thumbnail-list">
             <li class="thumbnail-item">
+                <a href="#" class="previous">&laquo; Previous</a>
+                <a href="#" class="next">Next &raquo;</a>
                 <a href="img/otter1.jpg" data-image-role = "trigger"
-                data-image-title = "Stayin' Alive" data-image-url = "img/otter1.jpg">
+                data-image-title = "Stayin' Alive" data-image-url = "img/otter1.jpg"> 
                     <img class="thumbnail-image" src="img/otter1.jpg" alt="Barry the Otter">
                     <span class="thumbnail-title">Barry</span>
                 </a>
@@ -55,10 +57,12 @@
         </ul>
 
         <div class="detail-image-container">
+            <button type = "button" class = "imgButton" id="Left">&lt;</button>
             <div class="detail-image-frame" data-image-role="frame">
                 <img class="detail-image" data-image-role="target" src="img/otter1.jpg" alt="">
                 <span class="detail-image-title" data-image-role="title">Stayin' Alive</span>
             </div>
+            <button type = "button" class = "imgButton" id="Right">&gt;</button>
         </div>
     </main>
     <script src="scripts/main.js" charset="utf-8"></script>

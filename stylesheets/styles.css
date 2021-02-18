@@ -88,6 +88,17 @@ a {
     width: 100%;
 }
 
+.previous {
+    background-color: #f1f1f1;
+    color: black;
+}
+
+.next {
+    background-color: #4CAF50;
+    color: white;
+}
+  
+
 .thumbnail-title {
     display: block;
     margin: 0;
@@ -145,6 +156,11 @@ a {
     max-width: 80%;
 }
 
+.imgButton {
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
 @media all and (min-width: 768px) {
     .main-content {
         flex-direction: row;
@@ -167,3 +183,4 @@ a {
         margin-top: 20px;
     }
 }
+

@@ -6,6 +6,8 @@ var HIDDEN_DETAIL_CLASS = 'hidden-detail';
 var TINY_EFFECT_CLASS = 'is-tiny';
 var ESC_KEY = 27;
 
+var imgTrack = 0;
+
 function setDetails(imageUrl, titleText) {
     'use strict';
     var detailImage = document.querySelector(DETAIL_IMAGE_SELECTOR);
@@ -30,10 +32,11 @@ function setDetailsFromThumb (thumbnail) {
     setDetails(imageFromThumb(thumbnail), titleFromThumb(thumbnail));
 }
 
-function addThumbClickHandler(thumb) {
+function addThumbClickHandler(thumb, curr) {
     'use strict';
-    thumb.addEventListener('click', function (event){
+    thumb.addEventListener('click', (event) => {
         event.preventDefault();
+        setTrack(curr);
         setDetailsFromThumb(thumb);
         showDetails();
     });
@@ -44,6 +47,11 @@ function getThumbnailsArray() {
     var thumbnails = document.querySelectorAll(THUMBNAIL_LINK_SELECTOR);
     var thumbnailArray = [].slice.call(thumbnails);
     return thumbnailArray;
+}
+
+function setTrack(newTrack) {
+    'use strict';
+    imgTrack = newTrack;
 }
 
 function hideDetails() {
@@ -72,10 +80,39 @@ function addKeyPressHandler() {
     });
 }
 
+function leftImages() {
+    'use strict';
+    document.getElementById('Left').addEventListener( 'click', () => {
+        var thumbnailArray = getThumbnailsArray();
+        var index;
+        if( imgTrack === 0){
+            index = thumbnailArray.length - 1;
+        } else {
+            index = (imgTrack -1) % thumbnailArray.length;
+        }
+        setTrack(index);
+        setDetailsFromThumb(thumbnailArray[index]);
+        showDetails();
+    });
+}
+
+function rightImages() {
+    'use strict';
+    document.getElementById('Right').addEventListener( 'click', () => {
+        var thumbnailArray = getThumbnailsArray();
+        var nextImg = (imgTrack + 1) % thumbnailArray.length;
+        setTrack(nextImg);
+        setDetailsFromThumb(thumbnailArray[nextImg]);
+        showDetails();
+    });
+}
+
 function initializeEvents() {
     'use strict';
     var thumbnails = getThumbnailsArray();
     thumbnails.forEach(addThumbClickHandler);
+    leftImages();
+    rightImages();
     addKeyPressHandler();
 }
 
